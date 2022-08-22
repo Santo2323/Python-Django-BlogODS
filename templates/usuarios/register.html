@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Register</title>
+	
+
+
+    <body bgcolor= #add8e6>
+
+</head>
+<body>
+
+	<h1 style="text-align: center; padding-top: 100px; font-family: Arial;">Registro de Usuario</h1>
+	<div class="caja">
+		<form action="" method="post">{% csrf_token %}
+		<div style="margin-top: 0px;">	
+		{% for field in form %}
+			<div class="field_container" style="text-align: center; padding-top: 20px; font-family: Arial;">
+				{{ field.errors }}
+				{{ field.label_tag }} </br>
+				{{ field }}
+				
+			</div>	
+
+		{% endfor %}
+			
+		</div>	
+			
+
+
+			<p style="text-align: center;">
+			<input type="submit" value="Registrar">
+			</p>
+			
+
+		</form>
+		<form action="{% url 'primera_vista' %}" method="get" style="text-align: center;">
+ 			<button type="submit">Volver al Inicio<br /></button></form>
+			
+	</div>
+	{% if messages %}
+			{% for message in messages %}
+			<div class="notification {{ message.tags}}">
+				{{ message }}
+			</div>
+			{% endfor %}
+	{% endif %}
+</body>
+</html>

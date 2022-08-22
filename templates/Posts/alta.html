@@ -1,0 +1,52 @@
+{% block contenido %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Unless You</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'primera_vista' %}">Unless you</a>	
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link" >Bienvenid@ {{ user.username }}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'primera_vista' %}">Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Cerrar Sesion</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'posts:alta_post' %}">Crear Post</a></li>
+                        {% else %}
+                             <li class="nav-item"><a class="nav-link" href="{% url 'primera_vista' %}">Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Registrate</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <header class="py-5 bg-light border-bottom mb-4">
+            <div class="container">
+                <div class="text-center my-5">
+                    <h1 class="fw-bolder">UNLESS YOU</h1>
+                    <h2>17 Objetivos de desarrollo sostenible</h2>
+                    <p class="lead mb-0">A menos de que vos empieces un cambio..</p> 
+                    <img src="{% static 'img/Logo.png' %}">
+                </div>
+            </div>
+       </header>
+	   <h1 class="display-5" style="padding-bottom: 1em;">Aqui abajo puede crear su propio Post!</h1>
+			<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+				{{form.errors}}
+				{{form.as_p}}
+				<input class="buttons" type="submit" name="" value="Crear">
+			</form>
+{% endblock contenido %}
+
