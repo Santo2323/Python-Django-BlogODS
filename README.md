@@ -1,0 +1,2 @@
+## Project with Python and Django Framework
+*Aca van a poder encontrar un blog sobre los Objetivos de Desarrollo Sostenible creados por la Organización de las Naciones Unidas, donde podrán registrarse, loguearse, como así comentar y navegar por el portal, posee filtros dependiendo de las temáticas que deseen y además posee una direccion para poder controlar los posteos de las personas como administrador. *
